@@ -45,6 +45,18 @@ var scrollWatch;
 					}
 				}
 
+				if ( direction.indexOf('top') > -1 && y < lastInnerHeight && y > offset) {
+					if(typeof arg == 'function') {
+						opt.top = y
+						lastInnerHeight = y
+						arg(this,opt,el)
+					} else {
+						arg = (typeof arg == 'string') ? document.querySelector(arg) : arg
+						lastInnerHeight = y
+						effect(arg)
+					}
+				}
+
 			})
 
 			return function(){}
